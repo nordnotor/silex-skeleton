@@ -1,0 +1,59 @@
+{% extends layout %}
+
+{% block content %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="/"><b>{{ app.name|trans }}</b></a>
+        </div>
+        <!-- /.login-logo -->
+        {% if data.error is defined %}
+            <div class="callout callout-danger">
+                <h5><i class="icon fa fa-warning"></i> {{ data.error }}</h5>
+            </div>
+        {% endif %}
+        <!-- /.login-box -->
+
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">{{ 'site.login.title' |trans }}</p>
+
+            <form action="{{ url('auth.login') }}" method="post">
+                <div class="form-group has-feedback">
+                    <input name="form[email]" type="email" class="form-control" placeholder="{{ 'site.login.login_placeholder' |trans }}">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input name="form[password]" type="password" class="form-control" placeholder="{{ 'site.login.password_placeholder' |trans }}">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    {#<div class="col-xs-8">#}
+                        {#<div class="checkbox icheck">#}
+                            {#<label>#}
+                                {#<input type="checkbox"> {{ 'site.login.remember_me' |trans }}#}
+                            {#</label>#}
+                        {#</div>#}
+                    {#</div>#}
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'site.login.bottom' |trans }}</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+            <a href="{{ url('auth.register') }}" class="text-center">{{ 'site.login.register'|trans }}</a>
+        </div>
+    </div>
+    <!-- /.login-box -->
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%'
+            });
+        });
+    </script>
+
+{% endblock %}

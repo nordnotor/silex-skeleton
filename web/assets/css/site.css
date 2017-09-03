@@ -1,0 +1,281 @@
+.onoffswitch {
+    position: relative;
+    width: 47px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 16px;
+    padding: 0;
+    line-height: 15px;
+    border: 2px solid #CCCCCC;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+
+.onoffswitch-label:before {
+    content: "";
+    display: block;
+    width: 15px;
+    margin: 0px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 30px;
+    border: 2px solid #CCCCCC;
+    border-radius: 15px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #3c8dbc;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    border-color: #3c8dbc;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
+}
+
+.verifiedSwitch {
+    position: relative;
+    width: 47px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.verifiedSwitch-checkbox {
+    display: none;
+}
+
+.verifiedSwitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 16px;
+    padding: 0;
+    line-height: 15px;
+    border: 2px solid #CCCCCC;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+
+.verifiedSwitch-label:before {
+    content: "";
+    display: block;
+    width: 15px;
+    margin: 0px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 30px;
+    border: 2px solid #CCCCCC;
+    border-radius: 15px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.verifiedSwitch-checkbox:checked + .verifiedSwitch-label {
+    background-color: #3c8dbc;
+}
+
+.verifiedSwitch-checkbox:checked + .verifiedSwitch-label, .verifiedSwitch-checkbox:checked + .verifiedSwitch-label:before {
+    border-color: #3c8dbc;
+}
+
+.verifiedSwitch-checkbox:checked + .verifiedSwitch-label:before {
+    right: 0px;
+}
+
+.icheckbox_square-blue, .iradio_square-blue {
+    transform: translateY(-2px);
+}
+
+.login-page .checkbox{
+    margin-top: 7px;
+}
+
+/*pagination*/
+/*.pagination > .paginate_button {*/
+/*display: inline-flex;*/
+/*}*/
+/*disabled <a>*/
+.pagination>li>a.disabled, .pagination>li>a.disabled:focus, .pagination>li>a.disabled:hover,
+.pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover{
+    pointer-events: none;
+}
+.pagination .dropdown-menu {
+    right: 0;
+    min-width: auto;
+    text-align: center;
+
+    top: 33px;
+    left: 76px;
+    right: -136px;
+}
+
+.pagination .btn-group>.btn+.dropdown-toggle {
+    margin: 0 1px 0 0;
+}
+
+.pagination>li>a {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: #fff;
+}
+.pagination>li>a:hover {
+    background-color: #367fa9;
+    border-color: #367fa9;
+    color: #fff;
+}
+.pagination>li>a.disabled {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: #fff;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+.pagination>li>a.disabled:hover {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}
+/* ./ pagination*/
+
+.kv-avatar,.kv-avatar {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.kv-avatar{
+    /*display: table-cell;*/
+    max-width: 220px;
+    text-align: center;
+    width: auto !important;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* animation */
+/*.td-perspective{*/
+    /*perspective: 150px;*/
+/*}*/
+.td-wrapper{
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: -webkit-transform 1.5s;
+    transition: transform 1.5s;
+    transition: transform 1.5s, -webkit-transform 1.5s;
+}
+.td-wrapper--back{
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.tb-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    visibility: hidden;
+    transition: visibility .3s ease-in;
+}
+.tb-front{
+    visibility: visible;
+    transition: visibility .3s ease-in;
+}
+.td-wrapper--back .tb-back{
+    visibility: visible;
+}
+.td-wrapper--back .tb-front{
+    visibility: hidden;
+}
+/* ./ animation */
+
+/* own style */
+.btn-icon .fa{
+    font-size: 18px;
+}
+.table__col-icons.table__col{
+    padding: 2px 8px;
+}
+
+.horizontal-scroll__wrapper{
+    overflow-x: scroll;
+}
+
+.table-data-list td:not(:first-child),
+.table-data-list th:not(:first-child){
+    padding: 0 !important;
+}
+
+.table-edit{
+    /*--------------------------*/
+    padding: 7px 10px 5px;
+    width: 40px;
+}
+.table-data-list input,
+.table-data-list input.form-control{
+    padding: 6px 5px;
+    width: 120px; /*---------------------*/
+}
+.input-edit-table{
+    border: 1px solid transparent;
+    background: transparent;
+}
+.input-edit-table--edit{
+    border: 1px solid #a09f9f;
+    background: #fff;
+}
+.input-edit-table--changed,
+.input-edit-table--changed + span{
+    border: 1px solid #b55db5;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(156,25,156,1);
+    -moz-box-shadow: 0px 2px 0px 0px rgba(156,25,156,1);
+    box-shadow: 0px 2px 0px 0px rgba(156,25,156,1);
+    /*   rgba(238, 130, 238, 0.32);   */
+}
+.input-edit-table--error{
+    border: 1px solid #f00;
+    -webkit-box-shadow: 0px 2px 0px 0px rgba(232,0,18,1);
+    -moz-box-shadow: 0px 2px 0px 0px rgba(232,0,18,1);
+    box-shadow: 0px 2px 0px 0px rgba(232,0,18,1);
+}
+.input-edit-table--big{
+    width: 500px;
+}
+
+/* add row */
+table.table-bordered.dataTable {
+    border-collapse: collapse !important;
+}
+.add-row{
+    border-top: 2px solid #a9a7a7;
+}
+/* ./ own style */
+
+

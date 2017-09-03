@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title '' %}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/bootstrap/css/bootstrap.min.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/daterangepicker/daterangepicker.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/datepicker/datepicker3.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/iCheck/all.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/colorpicker/bootstrap-colorpicker.min.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/timepicker/bootstrap-timepicker.min.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/select2/select2.min.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/dist/css/AdminLTE.min.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/dist/css/skins/_all-skins.min.css', 'asset') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/dist/css/skins/_all-skins.min.css', 'asset') }}">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('vendor/admin-lte/plugins/datatables/dataTables.bootstrap.css', 'asset') }}">
+    <!-- toastr (notifications) -->
+    <link rel="stylesheet" href="{{ asset('vendor/toastr/toastr.scss/toastr.css', 'asset') }}">
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="{{ asset('vendor/magnific-popup/dist/magnific-popup.css', 'asset') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/site.css', 'asset') }}">
+
+    {#jQuery#}
+    <script src="{{ asset('vendor/admin-lte/plugins/jQuery/jquery-2.2.3.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/bootstrap/js/bootstrap.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/select2/select2.full.min.js', 'asset') }}"></script>
+
+    <script src="{{ asset('vendor/admin-lte/plugins/colorpicker/bootstrap-colorpicker.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/timepicker/bootstrap-timepicker.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/iCheck/icheck.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/fastclick/fastclick.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/dist/js/app.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/dist/js/demo.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/chartjs/Chart.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/daterangepicker/daterangepicker.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/datepicker/bootstrap-datepicker.js', 'asset') }}"></script>
+    <script src="{{ asset('js/domurl.js', 'asset') }}"></script>
+    <script src="{{ asset('js/help.js', 'asset') }}"></script>
+
+    <script src="{{ asset('vendor/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/input-mask/jquery.inputmask.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/input-mask/jquery.inputmask.extensions.js', 'asset') }}"></script>
+
+    <!-- DataTables -->
+    <script src="{{ asset('vendor/admin-lte/plugins/datatables/jquery.dataTables.min.js', 'asset') }}"></script>
+    <script src="{{ asset('vendor/admin-lte/plugins/datatables/dataTables.bootstrap.min.js', 'asset') }}"></script>
+
+    <!-- toastr (notifications) -->
+    <script src="{{ asset('vendor/toastr/toastr.min.js', 'asset') }}"></script>
+
+    <script src="{{ asset('vendor/chart.js/dist/Chart.bundle.js', 'asset') }}"></script>
+
+    <!-- Magnific Popup core JS file -->
+    <script src="{{ asset('vendor/magnific-popup/dist/jquery.magnific-popup.js', 'asset') }}"></script>
+
+    <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+    {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>#}
+    <link href= "{{ asset('vendor/bootstrap-fileinput/css/fileinput.css', 'asset') }}" media="all" rel="stylesheet" type="text/css">
+    <link href= "{{ asset('vendor/bootstrap-fileinput/themes/explorer/theme.css', 'asset') }}" media="all" rel="stylesheet" type="text/css"/>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/plugins/sortable.js', 'asset') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/fileinput.js', 'asset') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/js/locales/es.js', 'asset') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/bootstrap-fileinput/themes/explorer/theme.js', 'asset') }}" type="text/javascript"></script>
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <a href="/" class="logo">
+            <span class="logo-mini"><b></b></span>
+            <span class="logo-lg"><b></b></span>
+        </a>
+        {% include 'general/navbar.html.twig' %}
+    </header>
+
+    <aside class="main-sidebar">
+        {% include 'general/sidebar.html.twig' %}
+    </aside>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>{{ breadcrumbs.name }}
+                <small>{{ breadcrumbs.min }}</small>
+            </h1>
+        </section>
+
+        <section class="content">
+            {% block content %}{% endblock %}
+        </section>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs"></div>
+        <strong>2017 <a href=""></a></strong>
+    </footer>
+</div>
+
+
+
+<!-- Google map -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI2yYuIu724S4RyMMUxJCO25Hvwv-sRR4&libraries=places&callback=initAutocomplete"
+        type="text/javascript"></script>
+
+</body>
+</html>

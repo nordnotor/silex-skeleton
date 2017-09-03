@@ -1,0 +1,22 @@
+{% block navbar %}
+<nav class="navbar navbar-static-top">
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+    </a>
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+            <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <span class="hidden-xs">{{ user.first_name|default('') }} {{ user.middle_name|default('') }} {{ user.last_name|default('') }} </span>
+                </a>
+            </li>
+
+            <li class="dropdown messages-menu">
+                <a href="{{ url('auth.logout') }}"><i class="fa fa-sign-out"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+{% endblock %}

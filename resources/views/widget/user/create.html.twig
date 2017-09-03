@@ -1,0 +1,81 @@
+{% extends layout %}
+    {% set breadcrumbsModelName = 'model.'~modelName~'.modelName' %}
+    {% set breadcrumbs = {'name': breadcrumbsModelName|trans, 'min': 'crud.base.create'|trans } %}
+{% block content %}
+    <div class="row">
+
+    <form enctype="multipart/form-data" action="{{ url(modelName ~ ".create") }}" method="post">
+        <input type="hidden" id="_method" name="_method" value="POST"/>
+
+        <div class="col-md-3">
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <div class="kv-avatar center-block text-center" style="width:200px">
+                        <input id="avatar-1" name="avatar-1" type="file" class="file-loading">
+                        <div class="help-block">
+                            <small></small>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-unbordered"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#create" data-toggle="tab" aria-expanded="true">Form</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="create">
+                        {% include 'widget/'~modelName~'/_form.html.twig' with {'data': data} %}
+
+                        <div class="form-group">
+                            <label for="password">{{ 'model.user.password'|trans }}</label>
+                            <input type="password" name="password" value="" id="password"
+                                   class="form-control">
+                            {% if data.model.errors.password is defined %} {% for value  in data.model.errors.password %}
+                                {{ value }} <br>
+                            {% endfor %} {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password_confirmation">{{ 'model.user.password_confirmation'|trans }}</label>
+                            <input type="password" name="password_confirmation" value="" id="password_confirmation" class="form-control">
+                            {% if data.model.errors.password_confirmation is defined %} {% for value  in data.model.errors.password_confirmation %}
+                                {{ value }} <br>
+                            {% endfor %} {% endif %}
+                        </div>
+
+
+                        <button class="btn btn-primary" type="submit">  {% if data.model._id is defined %} {{ 'crud.base.update'|trans }} {% else %} {{ 'crud.base.save'|trans }}  {% endif %}</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+        $("#avatar-1").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-1',
+            msgErrorClass: 'alert alert-block alert-danger',
+            defaultPreviewContent: '<img src="{{ data.model.attachment.url|default(asset('img/default/user.jpg', 'asset')) }}" class="profile-user-img img-responsive img-circle" alt="Your Avatar" style="width:160px">',
+            layoutTemplates: {main2: '{preview} {remove} {browse}'},
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+    </script>
+
+{% endblock %}

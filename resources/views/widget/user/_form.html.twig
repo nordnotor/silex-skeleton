@@ -1,0 +1,106 @@
+<div class="form-group">
+    <label for="first_name">{{ 'model.user.first_name'|trans }}</label>
+    <input type="text" name="first_name" value="{{ data.model.first_name|default('') }}" id="first_name"
+           class="form-control">
+    {% if data.model.errors.first_name is defined %} {% for value  in data.model.errors.first_name %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="middle_name">{{ 'model.user.middle_name'|trans }}</label>
+    <input type="text" name="middle_name" value="{{ data.model.middle_name|default('') }}" id="first_name"
+           class="form-control">
+    {% if data.model.errors.middle_name is defined %} {% for value  in data.model.errors.middle_name %}{{ value }}
+        <br>{% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="last_name">{{ 'model.user.last_name'|trans }}</label>
+    <input type="text" name="last_name" value="{{ data.model.last_name|default('') }}" id="last_name"
+           class="form-control">
+    {% if data.model.errors.last_name is defined %} {% for value  in data.model.errors.last_name %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="email">{{ 'model.user.email'|trans }}</label>
+    <input type="text" name="email" value="{{ data.model.email|default('') }}" id="email" class="form-control">
+    {% if data.model.errors.email is defined %} {% for value  in data.model.errors.email %}
+        {{ value }} <br>
+    {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="phone">{{ 'model.user.phone'|trans }}</label>
+    <input id="phone" type="text" name="phone" class="form-control" value="{{ data.model.phone|default('') }}"
+           data-inputmask="'mask': '9999999999'" data-mask>
+    {% if data.model.errors.phone is defined %} {% for value  in data.model.errors.phone %}{{ value }}
+        <br>{% endfor %} {% endif %}
+</div>
+
+{#<div class="form-group">#}
+    {#<label for="birthday">{{ 'model.user.birthday'|trans }}</label>#}
+    {#<input id="birthday" name="birthday" type="text"#}
+           {#value=""#}
+           {#class="form-control datepicker">#}
+    {#{% if data.model.errors.birthday is defined %} {% for value  in data.model.errors.birthday %}{{ value }}#}
+        {#<br>{% endfor %} {% endif %}#}
+{#</div>#}
+
+<div class="form-group">
+    <label for="sex">{{ 'model.user.sex'|trans }}</label>
+    <select id="sex" name="sex" class="form-control">
+        {% for value  in [
+        constant('App\\Models\\User::SEX_MALE'),
+        constant('App\\Models\\User::SEX_FEMALE'),
+        ] %}
+            <option {% if data.model.sex is defined and data.model.sex == value %} selected="selected" {% endif %}
+            value="{{ value }}" >{{ value }}</option>{% endfor %}
+    </select>
+    {% if data.model.errors.sex is defined %} {% for value  in data.model.errors.sex %}{{ value }}
+        <br> {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="status">{{ 'model.user.status'|trans }}</label>
+    <select id="status" name="status" class="form-control">
+        {% for value  in [
+        constant('App\\Models\\User::STATUS_CREATED'),
+        constant('App\\Models\\User::STATUS_BLOCKED'),
+        ] %}
+            <option {% if data.model.status is defined and data.model.status == value %} selected="selected" {% endif %}
+            value="{{ value }}" >{{ value }}</option>{% endfor %}
+    </select>
+    {% if data.model.errors.status is defined %} {% for value  in data.model.errors.status %}{{ value }}
+        <br> {% endfor %} {% endif %}
+</div>
+
+<div class="form-group">
+    <label for="role">{{ 'model.user.role'|trans }}</label>
+    <select id="role" name="role" class="form-control">
+        {% for value  in [
+        constant('App\\Models\\User::ROLE_USER'),
+        constant('App\\Models\\User::ROLE_ADMIN'),
+        ] %}
+            <option {% if data.model.role is defined and data.model.role == value %} selected="selected" {% endif %}
+            value="{{ value }}" >{{ value }}</option>{% endfor %}
+    </select>
+    {% if data.model.errors.role is defined %} {% for value  in data.model.errors.role %}{{ value }}
+        <br> {% endfor %} {% endif %}
+</div>
+
+<script>
+
+    $(function () {
+
+        $('#birthday').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+            defaultDate: ''
+        }).val('{% if data.model.birthday is defined and data.model.birthday is not empty %}{{data.model.birthday|date('m-d-Y')}} {% else %} {{ '11-11-1991' }} {% endif %}');
+
+        $('#phone').inputmask('999999999999')
+    });
+</script>

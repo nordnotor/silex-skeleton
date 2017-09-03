@@ -1,0 +1,5 @@
+.idea/
+vendor/
+web/assets/vendor/
+composer.lock
+pimple.json

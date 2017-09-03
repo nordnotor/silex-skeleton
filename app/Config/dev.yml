@@ -1,0 +1,92 @@
+app:
+  name: Silex App
+
+providers:
+
+  security:
+    logger: '@monolog'
+
+    rules:
+        - { path: ^/api, listeners: [api], roles: [], security: true }
+        - { path: ^/site, listeners: [session], roles: [], security: true }
+        # guest urls:
+        - { path: ^/, listeners: [session], roles: [], security: false }
+
+    guards:
+      - \App\Providers\Rbac\Guards\SessionGuard
+      - \App\Providers\Rbac\Guards\TokenGuard
+
+    listeners:
+        api:
+          token:
+            class: \App\Providers\Rbac\Tokens\ApiKeyToken
+            parameters: {input_key: token}
+#          provider: \App\Providers\Rbac\Providers\EloquentProvider
+        session:
+          token:
+             class: \App\Providers\Rbac\Tokens\SessionToken
+             parameters: {secret_key: t3o@1k$e%n5, permanent: true}
+#          provider: \App\Providers\Rbac\Providers\EloquentProvider
+
+
+
+  translator:
+    path: '@resources.dir/lang'
+    locales: ru|en|ua
+    fallback_locale: en
+
+  eloquent:
+      model_namespace: \App\Models\
+      default_connection: mongodb
+      connections:
+              mongodb:
+                driver: mongodb
+                host: 127.0.0.1
+                port: 27017
+                database: med
+                username: 'vlad'
+                password: '1111'
+                charset: utf8
+                collation: utf8_unicode_ci
+              mysql:
+                driver: mysql
+                host: 127.0.0.1
+                database: silex
+                username: vlad
+                password: 1111
+                charset: utf8
+                collation: utf8_unicode_ci
+
+  assets:
+      version: v1
+      version_format: %s?version=%s
+      named_packages:
+        asset:
+          version: v1
+          base_path: /assets
+
+  redis:
+      parameters:
+        scheme: tcp
+        host: 127.0.0.1
+        port: 6379
+        database: 1
+        read_write_timeout: 0
+      options:
+        prefix: ns
+
+  converter:
+      callbacks: [\App\Providers\Convert\Converter\Model]
+
+  translator:
+      path: '@resources.dir/lang'
+      locales: ru|en|ua
+
+  monolog:
+    logfile: '@storage.dir/logs/development.log'
+
+  twig:
+    path: '@resources.dir/views'
+    options:
+      cache: '@storage.dir/runtime/cache/twig'
+      form.templates: [bootstrap_3_layout.html.twig]

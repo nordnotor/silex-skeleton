@@ -1,0 +1,16 @@
+<?php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+set_time_limit(0);
+
+define('APP_DEBUG', true);
+
+$app = require dirname(__DIR__) . '/web/app.php';
+$app->boot();
+
+$console = require dirname(__DIR__) . '/app/Console/app.php';
+$console->run();
+
+
+

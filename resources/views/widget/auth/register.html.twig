@@ -1,0 +1,113 @@
+{% extends layout %}
+
+{% block content %}
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="{{ url('auth.login') }}"><b>{{ app.name|trans }}</b></a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">{{ 'site.register.title' |trans }}</p>
+
+            {% if data.errors is defined %}
+                <div class="callout callout-danger">
+                    <h5><i class="icon fa fa-warning"></i>{{ 'site.errors.title' |trans }}:</h5>
+                    {% for errorsField in data.errors %}
+                        {% for error in errorsField %}
+                            <p> - {{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form action="{{ url('auth.register') }}" method="post">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="{{ 'model.user.first_name'|trans }}"
+                           name="form[first_name]"
+                           value="{% if data.first_name is defined %} {{ data.first_name }} {% endif %}">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder=" {{ 'model.user.middle_name'|trans }}"
+                           name="form[middle_name]"
+                           value="{{ data.middle_name|default('') }}">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="{{ 'model.user.last_name'|trans }}"
+                           name="form[last_name]"
+                           value="{% if data.last_name is defined %} {{ data.last_name }} {% endif %}">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="email" class="form-control" placeholder="{{ 'model.user.email'|trans }}"
+                           name="form[email]"
+                           value="{% if data.email is defined %} {{ data.email }} {% endif %}">
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="form-group">
+                    <input placeholder="{{ 'model.user.phone'|trans }}" id="phone" type="text" name="form[phone]" class="form-control" value="{{ data.model.phone|default('') }}"
+                           data-inputmask="'mask': '9999999999'" data-mask>
+                    {% if data.model.errors.phone is defined %} {% for value  in data.model.errors.phone %}{{ value }}
+                        <br>{% endfor %} {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <select  id="sex" name="form[sex]" class="form-control" title="{{ 'model.user.sex'|trans }}">
+                        {% for value  in [
+                        constant('App\\Models\\User::SEX_MALE'),
+                        constant('App\\Models\\User::SEX_FEMALE'),
+                        ] %}
+                            <option {% if data.model.sex is defined and data.model.sex == value %} selected="selected" {% endif %}
+                            value="{{ value }}" >{{ value }}</option>{% endfor %}
+                    </select>
+                    {% if data.model.errors.sex is defined %} {% for value  in data.model.errors.sex %}{{ value }}
+                        <br> {% endfor %} {% endif %}
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Password"
+                           name="form[password]"
+                           value="{% if data.password is defined %} {{ data.password }} {% endif %}">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Retype password"
+                           name="form[password_confirmation]"
+                           value="{% if data.password_confirmation is defined %} {{ data.password_confirmation }} {% endif %}">
+                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input name="form[terms]" type="checkbox"> I agree to the <a href="#">terms</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                    </div>
+                </div>
+            </form>
+            <a href="{{ url('auth.login') }}" class="text-center">{{ 'site.register.have_membership' |trans }}</a>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.register-box -->
+
+    <script>
+        $(function () {
+
+            $('#phone').inputmask('999999999999');
+
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%'
+            })
+        })
+    </script>
+{% endblock %}
+
